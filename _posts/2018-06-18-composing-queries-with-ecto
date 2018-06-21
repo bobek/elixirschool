@@ -6,7 +6,8 @@ date:   2018-06-20
 layout: post
 title:  Queries composition with Ecto
 excerpt: >
-
+	Follow along as we look at how to dynamically compose Ecto queries using pattern matching and reduction.
+	
 ---
 
 Ecto is fantastic tool that affords us a great degree of flexibility.
@@ -110,7 +111,7 @@ end
 
 The result is public function, our module's API, that is concise and to a degree self documenting: "Get the base query, build the query with the criteria, and get all records".
 
-If we bring it all together our resulting module should look something like:
+When we bring it all together and begin to leverage the flexiblity we've provided, we begin to see the true power provided to us through Ecto:
 
 ```elixir
 defmodule Posts do
@@ -120,6 +121,14 @@ defmodule Posts do
     base_query()
     |> build_query(criteria)
     |> Repo.all()
+  end
+
+  def drafts, do: all(%{"draft" => true})
+
+  def get(id) do
+    %{"id" => id}
+    |> all()
+    |> handle_get()
   end
 
   defp base_query do
@@ -145,7 +154,46 @@ defmodule Posts do
   defp compose_query(query, _unsupported_param) do
     query
   end
+
+  defp handle_get([]), do: {:error, "not found"}
+  defp handle_get([post]), do: {:ok, post}
 end
 ```
 
-What do you think of this approach?  How are you composing our Ecto queries?  We'd love to hear your thoughts and suggestions!
+Here we have a module that encapsulates the logic around our data retrieval, separating our presentation and data layers, while providing a clean interface into our data.
+
+If we're using Phoenix, than our controller might look something like this:
+
+```elixir
+defmodule Web.PostController do
+  use Web, :controller
+
+  def index(conn, params) do
+    params
+    |> Posts.all()
+    |> render_result(conn)
+  end
+
+  def show(conn, %{"id" => id}) do
+    id
+    |> Posts.get()
+    |> render_result(conn)
+  end
+
+  defp render_result({:ok, post}, conn) do
+    render(conn, "show.json", post: post)
+  end
+
+  defp render_result({:error, reason}, conn) do
+    render(conn, ErrorView, "error.json", reason: reason)
+  end
+
+  defp render_result(posts, conn) when is_list(posts) do 
+    render(conn, "index.json", posts: posts)
+  end
+end
+```
+
+The controller is concise and does little more than present the data — as it should.
+
+What do you think of this approach?  How are you composing your Ecto queries?  We'd love to hear your thoughts and suggestions!
