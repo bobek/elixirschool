@@ -1,0 +1,31 @@
+script_direction: ltr
+project:
+  title: Elixir School
+  description: Lekce programovacího jazyka Elixir
+table_of_contents: Obsah
+share: Sdílej tuto stránku
+sections:
+  home: Home
+  basics: Základy
+  advanced: Pokročilé
+  specifics: Speciality
+  libraries: Knihovny
+  blog: Blog
+  contributors: Přispěvatelé
+  translation_report: Stav překladu
+
+version_messages:
+  outdated: "Některé části tohoto překladu mohou být zastaralé."
+  major: "Od poslení aktulizace překladu proběhly důležité (major) změny v originálu lekce."
+  minor: "Od poslení aktulizace překladu proběhly drobné (minor) změny v originálu lekce."
+  patch: "Od poslení aktulizace překladu proběhly malinké (patch) změny v originálu lekce."
+  none: "Tento překlad je aktuální."
+  error: "Verze této kapitoly je špatně definována."
+
+translation_report:
+  section: Sekce
+  original_title: Původní nadpis
+  translation_title: Přeložený nadpis
+  original_version: Původní verze
+  translation_version: Verze překladu
+  version_severity: Velikost změny

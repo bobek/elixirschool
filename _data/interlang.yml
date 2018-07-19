@@ -3,6 +3,7 @@
 #  bg:
 #  bn:
 #  cn:
+#  cs:
 #  de:
 #  en:
 #  es:
@@ -29,6 +30,7 @@ en:
   bg: Bulgarian
   bn: Bengali
   cn: Chinese
+  cs: Czech
   de: German
   en: English
   es: Spanish
@@ -56,6 +58,7 @@ es:
   bg: Búlgaro
   bn: Bengalí
   cn: Chino
+  cs: Checo
   de: Alemán
   en: Inglés
   es: Español
@@ -81,6 +84,7 @@ id:
  bg: Bahasa Bulgaria
  bn: Bahasa Bengali
  cn: Bahasa China
+ cs: Bahasa Czech
  de: Bahasa Jerman
  en: Bahasa Inggris
  es: Bahasa Spanyol
@@ -105,6 +109,7 @@ ja:
   bg: ブルガリア語
   bn: ベンガル語
   cn: 中国語
+  cs: チェコ語
   de: ドイツ語
   en: 英語
   es: スペイン語
@@ -130,6 +135,7 @@ th:
   bg: ภาษาบัลแกเรีย
   bn: ภาษาเบงกอล
   cn: ภาษาจีน
+  cs: สาธารณรัฐเช็ก
   de: ภาษาเยอรมัน
   en: ภาษาอังกฤษ
   es: ภาษาสเปน
